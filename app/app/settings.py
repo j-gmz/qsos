@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'simple_history',
     'rest_framework.authtoken',
@@ -49,6 +50,18 @@ INSTALLED_APPS = [
     'users',
     'womts'
 ]
+
+# Turn off blanket CORS ('*') in favour of whitelisting.
+CORS_ORIGIN_ALLOW_ALL = False
+
+## Only process CORS on the following paths requested by clients.
+#CORS_URLS_REGEX = r'^(/api/).*$'
+
+# When CORS kicks in, only allow origins matching the sites in the whitelist:
+CORS_ORIGIN_WHITELIST = os.environ.get('CORS_ORIGIN_WHITELIST', 'localhost:8008').split(',')
+
+# Allow credentials for CORS-controlled routes.
+CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
