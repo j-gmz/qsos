@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'simple_history',
-    'rest_framework.authtoken',
+    #'rest_framework.authtoken',
     'core',
     'users',
     'womts'
@@ -73,7 +73,7 @@ REST_FRAMEWORK = {
         #'rest_framework.permissions.IsAuthenticated'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication'
     ] 
 }

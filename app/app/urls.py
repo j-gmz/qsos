@@ -18,7 +18,11 @@ from django.urls import path, include
 from django.conf.urls.static import static 
 from django.conf import settings
 from rest_framework import routers
-from rest_framework.authtoken.views import obtain_auth_token
+#from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 from womts.views import (
     WomtViewSet
@@ -31,8 +35,10 @@ router.register(r'womts', WomtViewSet)
 urlpatterns = [
     #path('womts/', include('womts.urls')),
     path('api/', include(router.urls)),
-    path('api-auth/', obtain_auth_token),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    #path('api-auth/', obtain_auth_token),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     #path('', home_view, name ='home'),
     path('admin/', admin.site.urls),
 ]
