@@ -58,7 +58,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 #CORS_URLS_REGEX = r'^(/api/).*$'
 
 # When CORS kicks in, only allow origins matching the sites in the whitelist:
-CORS_ORIGIN_WHITELIST = os.environ.get('CORS_ORIGIN_WHITELIST', 'localhost:8008').split(',')
+CORS_ORIGIN_WHITELIST = os.environ.get('CORS_ORIGIN_WHITELIST').split(',')
 
 # Allow credentials for CORS-controlled routes.
 CORS_ALLOW_CREDENTIALS = True
